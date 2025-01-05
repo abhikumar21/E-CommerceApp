@@ -1,0 +1,39 @@
+/* 
+#app {
+    height: 100%;
+  }
+  html,
+  body {
+    position: relative;
+    height: 100%;
+  }
+  
+  body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+  } */
+
+  body{
+    font-family: sans-serif;
+    line-height: 1.4rem;
+  }
+
+  .roundButton {
+    background-color: aquamarine;
+    display: inline-flex; /* Use inline-flex to size according to content */
+    width: auto; /* Ensures width fits content */
+    padding-left: 18px; 
+    padding-right: 18px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    justify-content: center; /* Centers text horizontally */
+    align-items: center; /* Centers text vertically */
+    border: none; /* Optional: removes any default border */
+    white-space: nowrap; /* Ensures text stays in one line */
+    border-radius: 5px;
+    
+  }

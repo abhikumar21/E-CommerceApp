@@ -1,0 +1,11 @@
+.property .list .character{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* border-bottom-width: 10px; */
+}
+
+.property .list li{
+    padding: 15px 15px;
+    border-bottom: 2px solid #b9b9b9;
+}

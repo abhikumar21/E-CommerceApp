@@ -1,0 +1,13 @@
+
+.title-register::before{
+    content: '';
+    position: absolute;
+    top: 48px;
+    height: 4px;
+    width: 50px;
+    background: linear-gradient(60deg, rgb(239, 87, 17), rgb(19, 192, 235));
+}
+
+.register-dialogue{
+    background: linear-gradient(30deg, rgb(187, 187, 187), white);
+}
