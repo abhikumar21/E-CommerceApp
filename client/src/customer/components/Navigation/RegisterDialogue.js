@@ -4,6 +4,7 @@ import './Navigation.css'
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../../../features/auth/authSlice';
+import UserInfo from './UserInfo';
 
 export default function MyModal() {
   const user = useSelector((state)=>state.auth.user);
@@ -91,13 +92,7 @@ export default function MyModal() {
       </div>
       : 
       <div className='avatar'>
-        {/* <div className="image bg-blue-600 h-[35px] w-[35px] rounded-full overflow-hidden">
-          {avatar ? 
-          <img className='flex items-center' src="" alt="A" />
-          : <div className="av flex items-center justify-center align-middle h-full bg-green-600">A</div>
-           }
-        </div> */}
-        {user.firstname}
+        <UserInfo/>
       </div>
       }
 
