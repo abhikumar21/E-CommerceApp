@@ -26,7 +26,7 @@ const UserInfo = () => {
             <MenuItems
               transition
               anchor="bottom end"
-              className="w-52 origin-top-right rounded-xl border border-white/5 bg-gray-100 shadow-2xl p-1 text-sm/6 text-black transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
+              className="w-52 z-50 origin-top-right rounded-xl border border-white/5 bg-gray-100 shadow-2xl p-1 text-sm/6 text-black transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
             >
               <MenuItem>
                 <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white">

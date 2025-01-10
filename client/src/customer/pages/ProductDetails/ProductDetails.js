@@ -10,7 +10,7 @@ import S6 from '../../../data/Tops/a18.avif'
 import StarIcon from '@mui/icons-material/Star';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
-import ProductCard from '../ProductPage/ProductCard';
+import ProductCard from '../ProductsPage/ProductCard';
 import { womenTops } from '../../../data/womenClothing';
 
 
@@ -119,7 +119,62 @@ const ProductDetails = () => {
             </div>
           </div>
         </div>
-         <hr className='h-4 bg-slate-300' />
+
+        <hr className='h-4 bg-slate-300' />
+
+        <div className="review_rating px-10 py-5">
+          <h3 className='font-bold text-lg mb-4'>Recent Reviews and Rating</h3>
+          <div className="" style={{display: "grid", gridTemplateColumns : "2fr 1fr"}}>
+            <div className="reviews pr-[100px]">
+
+              <div className="review-card my-5" style={{display: "grid", gridTemplateColumns:"1fr 10fr"}}>
+                <div className="avataar h-[40px] w-[40px] overflow-hidden rounded-full mt-2 mx-auto"><img src={P1} alt="" className='w-full h-full object-cover' /></div>
+                <div className="review-text">
+                  <div className="name font-semibold">Ananya</div>
+                  <div className="date text-xs text-slate-600">April 6, 2012</div>
+                  <div className="stars flex text-yellow-500"><StarIcon/><StarIcon/><StarIcon/><StarIcon/><StarHalfIcon/></div>
+                  <div className="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab voluptatem id iusto pariatur nemo laborum, voluptatibus autem quia corrupti reprehenderit?</div>
+                </div>
+              </div>
+
+              <div className="review-card" style={{display: "grid", gridTemplateColumns:"1fr 10fr"}}>
+                <div className="avataar h-[40px] w-[40px] overflow-hidden rounded-full mt-2 mx-auto"><img src={P1} alt="" className='w-full h-full object-cover' /></div>
+                <div className="review-text">
+                  <div className="name font-semibold">Ananya</div>
+                  <div className="date text-xs text-slate-600">April 6, 2012</div>
+                  <div className="stars flex text-yellow-500"><StarIcon/><StarIcon/><StarIcon/><StarIcon/><StarHalfIcon/></div>
+                  <div className="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab voluptatem id iusto pariatur nemo laborum, voluptatibus autem quia corrupti reprehenderit?</div>
+                </div>
+              </div>
+
+            </div>
+            <div className="ratings px-2 py-2">
+              <div className="review-bar">
+                <h2 className='font-semibold my-1'>Product Ratings</h2>
+                <div className="no-of-ratings text-yellow-500 mb-4"><StarIcon/><StarIcon/><StarIcon/><StarIcon/><StarHalfIcon/></div>
+                <div className="grade-col ">
+
+                  <div className="hor flex items-center justify-between pb-1">
+                    <div className="text mr-4">Excellent</div>
+                    <div className="text-bar bg-gray-300 w-[300px] h-1 flex rounded-lg overflow-hidden">
+                      <div className="color-bar bg-green-500 w-[70%] h-full"></div>
+                    </div>
+                  </div>
+                  <div className="hor flex items-center justify-between pb-1">
+                    <div className="text mr-4">Good</div>
+                    <div className="text-bar bg-gray-300 w-[300px] h-1 flex rounded-lg overflow-hidden">
+                      <div className="color-bar bg-green-500 w-[70%] h-1"></div>
+                    </div>
+                  </div>
+                 
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr className='h-4 bg-slate-300' />
+        
         <div className="related-products-section mt-10 px-4">
           <div className="head text-2xl font-bold mt-4 mb-4">Similar Products</div>
           <div className="related col-span-4 flex flex-wrap justify-around border-slate-800 px-2 py-2 gap-2">

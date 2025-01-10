@@ -6,7 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './appStore/store.js'
-// 2:49
+// 1-> Forntend
+// 4-> Backend
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

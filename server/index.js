@@ -8,6 +8,7 @@ import mongoose from "mongoose";
 import {connectDb} from "./config/db.js";
 import dotenv from "dotenv";
 import AuthRoute from './routes/AuthRoute.js';
+import UserRoute from './routes/UserRoute.js'
 
 
 
@@ -42,3 +43,4 @@ app.listen(PORT, async(req, res)=> {
 //     res.send("hello")
 // } )
 app.use('/auth', AuthRoute);
+app.use('/user', UserRoute)

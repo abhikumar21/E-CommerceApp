@@ -45,15 +45,15 @@ export default function MyCarousel() {
         clickable:true,
       }} 
       modules={[Pagination, Autoplay]} 
-      autoplay={{
-        delay: 3000,
-        disableOnInteraction: false,
-      }} 
+      // autoplay={{
+      //   delay: 3000,
+      //   disableOnInteraction: false,
+      // }} 
       speed={1000}
       className="mySwiper ">
 
         {itemData.map((item)=> {
-            return <SwiperSlide className='mySwiperslide'><img src={item.imgUrl} alt="" /></SwiperSlide>
+            return <SwiperSlide className='mySwiperslide -z-20'><img src={item.imgUrl} alt="" /></SwiperSlide>
         })}
         
       </Swiper>

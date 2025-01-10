@@ -3,7 +3,7 @@ import Navigation from './customer/components/Navigation/Navigation';
 import MyCarousel from './customer/components/HomeCarousel/MyCarousel';
 import HomePage from './customer/pages/HomePage/HomePage';
 import Footer from './customer/components/Footer/Footer';
-import ProductPage from './customer/pages/ProductPage/ProductPage';
+import ProductPage from './customer/pages/ProductsPage/ProductPage';
 import ProductDetails from './customer/pages/ProductDetails/ProductDetails';
 import Todos from './customer/pages/TodoPage/Todos';
 import { Routes, Route } from 'react-router-dom';
