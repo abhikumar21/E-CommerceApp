@@ -9,7 +9,6 @@ import { womenTops } from '../../../data/womenClothing.js';
 
 
 const ProductPage = () => {
-  //  2:48 
 
 
 

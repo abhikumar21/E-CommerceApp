@@ -7,6 +7,8 @@ import Footer from './customer/components/Footer/Footer';
 import ProductPage from './customer/pages/ProductsPage/ProductPage';
 import ProductDetails from './customer/pages/ProductDetails/ProductDetails';
 import Todos from './customer/pages/TodoPage/Todos';
+import Checkout from './customer/pages/Checkout/Checkout';
+import OrdersPage from './customer/pages/OrdersPage/OrdersPage'
 import { Routes, Route } from 'react-router-dom';
 
 
@@ -22,11 +24,9 @@ function App() {
           <Route path="/products/:id" element={<ProductDetails />} />
           <Route path="/todos" element={<Todos/>} />
           <Route path="/cart" element={<Cart/>} />
+          <Route path="/checkout" element={<Checkout/>} />
+          <Route path="/account/orders" element={<OrdersPage/>} />
         </Routes>
-
-            {/* <HomePage/> */}
-            {/* <ProductPage/> */}
-            {/* <ProductDetails/> */}
       </div>
       <Footer/>
     </div>
