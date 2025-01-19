@@ -10,6 +10,7 @@ import Todos from './customer/pages/TodoPage/Todos';
 import Checkout from './customer/pages/Checkout/Checkout';
 import OrdersPage from './customer/pages/OrdersPage/OrdersPage'
 import { Routes, Route } from 'react-router-dom';
+import OrderDeliverPage from './customer/pages/OrderDeliver/OrderDeliverPage';
 
 
 function App() {
@@ -26,6 +27,8 @@ function App() {
           <Route path="/cart" element={<Cart/>} />
           <Route path="/checkout" element={<Checkout/>} />
           <Route path="/account/orders" element={<OrdersPage/>} />
+          <Route path="/account/orders/1" element={<OrderDeliverPage/>} />
+
         </Routes>
       </div>
       <Footer/>

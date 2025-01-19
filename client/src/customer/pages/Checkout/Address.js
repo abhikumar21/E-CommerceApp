@@ -1,8 +1,10 @@
 import React from 'react'
 
-const Details =()=> {
+const inputStyle = "w-full border border-slate-500 h-[42px] rounded-sm px-5";
+
+export const AddressDetails =()=> {
     return (
-    <div className="address-details border-t-2 border-slate-300">
+    <div className="address-details">
         <div className="name">Abhishek</div>
         <div className="address">Mugare, Songaon, Ambedkar-Nagar, Uttar Pradesh, India, 224122</div>
         <div className="phone mb-4">77766677766</div>
@@ -13,22 +15,16 @@ const Details =()=> {
 }
 
 
-
-
-const inputStyle = "w-full border border-slate-500 h-[42px] rounded-sm px-5";
-
 const Address = () => {
   
-
-
   return (
     <div className='address'>
       <div className="container flex gap-10">
         <div className="left w-[800px] gap-4 flex flex-col px-4 pt-4 rounded-md">
-            <Details/>
-            <Details/>
+            <AddressDetails/>
+            <AddressDetails/>
         </div>
-        <div className="right w-full px-5 py-8" style={{boxShadow:"0px 0px 10px black"}}>
+        <div className="right w-full px-5 py-8" style={{boxShadow:"0px 0px 10px rgb(155, 155, 155)"}}>
             <div className="box flex flex-col w-full gap-6">
                 <div className="name flex w-full gap-5">
                     <input className={inputStyle} type="text" placeholder='First Name' required="true" />

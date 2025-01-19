@@ -17,7 +17,10 @@ const OrderCard=({item})=> {
       </div>
       <div className="price flex flex-col justify-center">${item.price}</div>
       <div className="status flex flex-col justify-center">
-        <div className="p1 font-semibold">Expected delivery on March 14</div>
+        <div className="p1 font-semibold flex items-center gap-2">
+          <div className="green h-[12px] w-[12px] rounded-full bg-green-600"></div>
+          <div>Expected delivery on March 14</div>
+        </div>
         <div className="p2">Your item has been delivered</div>
       </div>
     </div>
@@ -42,59 +45,39 @@ const Filters = () => {
   }
 
 
-const [dropBoxOpen, setDropBoxOpen] = useState({orderStatus: true});
+// const [dropBoxOpen, setDropBoxOpen] = useState({orderStatus: true});
 
 
-    const PropertiesData = [
-      {
-        id: "orderStatus",
-        name: "Order Status",
-        options: [
-            { id: 1, value: "red", label: "On the way" },
-            { id: 2, value: "black", label: "Delivered" },
-            { id: 3, value: "blue", label: "Cancelled" },
-            { id: 4, value: "green", label: "Returned" }
-        ],
-      }
+    const OrderStatus = [
+        { id: "onTheWay", value: "red", label: "On the way" },
+        { id: "delivered", value: "black", label: "Delivered" },
+        { id: "cancelled", value: "blue", label: "Cancelled" },
+        { id: "returned", value: "green", label: "Returned" }
     ];
     
   
 
 
   return (
-    <div>
+    <div className='px-4 py-4' style={{boxShadow: "0 0 8px 2px black"}}>
       <div className="head font-bold text-2xl my-2">Filters</div>
-       <ul className="list style-none border-solid border-2 border-slate-800 px-3">
-                    {PropertiesData.map((property)=> {
-                      return (
-                    <li key={property.id}>
-                      <div className="character cursor-pointer text-xl font-medium">
-                        <span>{property.name}</span>
-                        <span>+</span>
-                      </div>
-                      {dropBoxOpen[property.id] ? 
-                      (<div className="dropBox mx-2 my-2 flex flex-col text-slate-500">
-                       {property.options.map((item) => {
-                        //  console.log(item);
-                        return (
-                          <span className='flex gap-2 py-1'>
-                            <input 
-                            onChange={()=>handleFilter(item.value, property.id)}
-                            type="checkbox"
-                            id={`${property.id}${item.id}`} 
-                            name={`${property.id}`}
-                            />
-                            <label for={`${property.id}${item.id}`}>{item.label}</label>
-                           </span>
-                        )
-                       })}
-                      </div>) : (<></>)
-                      }    
-                    </li>   
-                      )              
-                    })}
-     
-                </ul>
+      <div className="list style-none px-3">
+        <div className="orderStatus text-xl font-semibold py-2">Order Status</div>
+        <div className="items-status">
+          {OrderStatus.map((item)=> {
+            return(
+              <span className='flex gap-2 my-2'>
+                <input 
+                type="checkbox"
+                id={`${item.id}`} 
+                name={`${item.id}`}
+                />
+                <label for={`${item.id}`}>{item.label}</label>
+              </span>
+            )
+           })} 
+        </div>
+      </div>
     </div>
   )
 }
