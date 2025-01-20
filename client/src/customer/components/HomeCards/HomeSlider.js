@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
@@ -18,7 +18,6 @@ const HomeSlider = ({id, category, sectionName}) => {
     const prevButtonSelector = `.${id}-prev-button`;
     const nextButtonSelector = `.${id}-next-button`;
     
-    // console.log(menTshirt)
     
 
   return (
@@ -47,9 +46,9 @@ const HomeSlider = ({id, category, sectionName}) => {
           prevEl: `.${id}-prev-button`,
         }}
       >
-        {category.slice(0, 9).map((data)=> {
+        {category.slice(0, 9).map((data, index)=> {
           return (
-            <SwiperSlide className='product-swiper-slide'><HomeCard data={data} /></SwiperSlide>
+            <SwiperSlide key={index} className='product-swiper-slide'><HomeCard data={data} /></SwiperSlide>
           )
         })
         }

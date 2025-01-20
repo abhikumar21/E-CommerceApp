@@ -28,6 +28,11 @@ const ProductDetails = () => {
   }
 
 
+  const handleAddToCart = async() => {
+    // const res = await axios.post('/cart', currentItem);
+  }
+
+
   return (
     <div className="detailsPage bg-slate-300 pb-10">
       <div className="horizontal-padding mx-20 bg-white">
@@ -89,7 +94,8 @@ const ProductDetails = () => {
                 </div>
 
                 <div className="addtocart my-10">
-                  <button className='roundButton'>Add to Cart</button>
+                  <button onClick={handleAddToCart}
+                   className='roundButton'>Add to Cart</button>
                 </div>
 
                 <div className="description">

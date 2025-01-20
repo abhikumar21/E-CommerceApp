@@ -1,5 +1,4 @@
 
-//1:45 models (rating)
 
 import express from "express";
 import bodyParser from "body-parser";
@@ -10,7 +9,7 @@ import dotenv from "dotenv";
 import AuthRoute from './routes/AuthRoute.js';
 import UserRoute from './routes/UserRoute.js'
 
-
+//4 -> cartServices
 
 const app = express();
 app.use(express.json());
