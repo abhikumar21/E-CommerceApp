@@ -1,11 +1,15 @@
 import React from 'react'
 import P1 from './images/a4.webp'
+import { useNavigate } from 'react-router-dom'
 
 
 
 const ProductCard = ({item}) => {
+  const navigate = useNavigate();
+
+
   return (
-    <div className="card overflow-x-hidden w-[260px] py-[30px]">
+    <div onClick={()=>navigate(`/product/${item.id}`)} className="card overflow-x-hidden w-[260px] py-[30px]">
         <div className="image h-[300px] overflow-hidden">
             <img className='object-cover hover:scale-110 ease-in-out duration-500' src={item.imageUrl} alt="" />
         </div>

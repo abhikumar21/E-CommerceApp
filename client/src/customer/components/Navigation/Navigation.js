@@ -3,6 +3,13 @@ import { Fragment, useState } from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Register from './Register.js'
+import { useNavigate } from 'react-router-dom'
+import logo from '../../pages/ProductsPage/images/logo.png'
+import P1 from '../../pages/ProductsPage/images/a1.avif'
+import P2 from '../../pages/ProductsPage/images/a2.avif'
+
+
+
 
 const navigation = {
   categories: [
@@ -13,13 +20,13 @@ const navigation = {
         {
           name: 'New Arrivals',
           href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg',
+          imageSrc: `${P1}`,
           imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.',
         },
         {
           name: 'Basic Tees',
           href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg',
+          imageSrc: `${P2}`,
           imageAlt: 'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
         },
       ],
@@ -28,38 +35,38 @@ const navigation = {
           id: 'clothing',
           name: 'Clothing',
           items: [
-            { name: 'Tops', href: '#' },
-            { name: 'Dresses', href: '#' },
-            { name: 'Pants', href: '#' },
-            { name: 'Denim', href: '#' },
-            { name: 'Sweaters', href: '#' },
-            { name: 'T-Shirts', href: '#' },
-            { name: 'Jackets', href: '#' },
-            { name: 'Activewear', href: '#' },
-            { name: 'Browse All', href: '#' },
+            { id: 'tops', name: 'Tops', href: '#' },
+            { id: 'dresses', name: 'Dresses', href: '#' },
+            { id: 'pants', name: 'Pants', href: '#' },
+            { id: 'denim', name: 'Denim', href: '#' },
+            { id: 'sweaters', name: 'Sweaters', href: '#' },
+            { id: 't-shirts', name: 'T-Shirts', href: '#' },
+            { id: 'jackets', name: 'Jackets', href: '#' },
+            { id: 'activewear', name: 'Activewear', href: '#' },
+            { id: 'browse-all', name: 'Browse All', href: '#' },
           ],
         },
         {
           id: 'accessories',
           name: 'Accessories',
           items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' },
+            { id: 'watches', name: 'Watches', href: '#' },
+            { id: 'wallets', name: 'Wallets', href: '#' },
+            { id: 'bags', name: 'Bags', href: '#' },
+            { id: 'sunglasses', name: 'Sunglasses', href: '#' },
+            { id: 'hats', name: 'Hats', href: '#' },
+            { id: 'belts', name: 'Belts', href: '#' },
           ],
         },
         {
           id: 'brands',
           name: 'Brands',
           items: [
-            { name: 'Full Nelson', href: '#' },
-            { name: 'My Way', href: '#' },
-            { name: 'Re-Arranged', href: '#' },
-            { name: 'Counterfeit', href: '#' },
-            { name: 'Significant Other', href: '#' },
+            { id: 'full-nelson', name: 'Full Nelson', href: '#' },
+            { id: 'my-way', name: 'My Way', href: '#' },
+            { id: 're-arranged', name: 'Re-Arranged', href: '#' },
+            { id: 'counterfeit', name: 'Counterfeit', href: '#' },
+            { id: 'significant-other', name: 'Significant Other', href: '#' },
           ],
         },
       ],
@@ -71,13 +78,13 @@ const navigation = {
         {
           name: 'New Arrivals',
           href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
+          imageSrc: `${P1}`,
           imageAlt: 'Drawstring top with elastic loop closure and textured interior padding.',
         },
         {
           name: 'Artwork Tees',
           href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg',
+          imageSrc: `${P2}`,
           imageAlt:
             'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
         },
@@ -87,35 +94,35 @@ const navigation = {
           id: 'clothing',
           name: 'Clothing',
           items: [
-            { name: 'Tops', href: '#' },
-            { name: 'Pants', href: '#' },
-            { name: 'Sweaters', href: '#' },
-            { name: 'T-Shirts', href: '#' },
-            { name: 'Jackets', href: '#' },
-            { name: 'Activewear', href: '#' },
-            { name: 'Browse All', href: '#' },
+            { id: 'tops', name: 'Tops', href: '#' },
+            { id: 'pants', name: 'Pants', href: '#' },
+            { id: 'sweaters', name: 'Sweaters', href: '#' },
+            { id: 't-shirts', name: 'T-Shirts', href: '#' },
+            { id: 'jackets', name: 'Jackets', href: '#' },
+            { id: 'activewear', name: 'Activewear', href: '#' },
+            { id: 'browse-all', name: 'Browse All', href: '#' },
           ],
         },
         {
           id: 'accessories',
           name: 'Accessories',
           items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' },
+            { id: 'watches', name: 'Watches', href: '#' },
+            { id: 'wallets', name: 'Wallets', href: '#' },
+            { id: 'bags', name: 'Bags', href: '#' },
+            { id: 'sunglasses', name: 'Sunglasses', href: '#' },
+            { id: 'hats', name: 'Hats', href: '#' },
+            { id: 'belts', name: 'Belts', href: '#' },
           ],
         },
         {
           id: 'brands',
           name: 'Brands',
           items: [
-            { name: 'Re-Arranged', href: '#' },
-            { name: 'Counterfeit', href: '#' },
-            { name: 'Full Nelson', href: '#' },
-            { name: 'My Way', href: '#' },
+            { id: 're-arranged', name: 'Re-Arranged', href: '#' },
+            { id: 'counterfeit', name: 'Counterfeit', href: '#' },
+            { id: 'full-nelson', name: 'Full Nelson', href: '#' },
+            { id: 'my-way', name: 'My Way', href: '#' },
           ],
         },
       ],
@@ -125,13 +132,20 @@ const navigation = {
     { name: 'Company', href: '#' },
     { name: 'Stores', href: '#' },
   ],
-}
+};
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function Navigation() {
+  const navigate = useNavigate();
+  const handleCategoryClick=(category, section, item)=> {
+    const itemId = item.name.toLowerCase();
+    navigate(`/${category.id}/${section.id}/${itemId}`)
+  }
+
   const [open, setOpen] = useState(false)
 
   return (
@@ -251,7 +265,7 @@ export default function Navigation() {
                 <div className="border-t border-gray-200 px-4 py-6">
                   <a href="#" className="-m-2 flex items-center p-2">
                     <img
-                      src="https://tailwindui.com/img/flags/flag-canada.svg"
+                      src={logo}
                       alt=""
                       className="block h-auto w-5 flex-shrink-0"
                     />
@@ -289,7 +303,7 @@ export default function Navigation() {
                   <span className="sr-only">Your Company</span>
                   <img
                     className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                    src={logo}
                     alt=""
                   />
                 </a>
@@ -364,9 +378,10 @@ export default function Navigation() {
                                           >
                                             {section.items.map((item) => (
                                               <li key={item.name} className="flex">
-                                                <a href={item.href} className="hover:text-gray-800">
+                                                <p onClick={()=>handleCategoryClick(category, section, item)}
+                                                 href={item.href} className="hover:text-gray-800">
                                                   {item.name}
-                                                </a>
+                                                </p>
                                               </li>
                                             ))}
                                           </ul>
