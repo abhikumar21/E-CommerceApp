@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
-const productSchema = new mongoose({
+const ProductSchema = mongoose.Schema({
+    adminId:{
+        type: String,
+        required: true,
+    },
     title: {
         type: String,
         required: true,
@@ -55,11 +59,7 @@ const productSchema = new mongoose({
         type: Number,
         default: 0,
     },
-    category: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Category',
-    }
 }, {timestamps: true});
 
-const Product = mongoose.model("Product", productSchema);
+const Product = mongoose.model("Product", ProductSchema);
 export default Product;
