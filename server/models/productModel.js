@@ -39,9 +39,36 @@ const ProductSchema = mongoose.Schema({
         type: String,
         default: "Red",
     },
-    category: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Category",
+    // category: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "Category",
+    // },
+    topLevelCategory:{
+        name:{
+            type: String,
+        },
+        level: {
+            type: Number,
+            default:1,
+        }
+    },
+    secondLevelCategory:{
+        name:{
+            type: String,
+        },
+        level: {
+            type: Number,
+            default:2,
+        }
+    },
+    thirdLevelCategory:{
+        name:{
+            type: String,
+        },
+        level: {
+            type: Number,
+            default:3,
+        }
     },
     owner: {
         type: mongoose.Schema.Types.ObjectId,
