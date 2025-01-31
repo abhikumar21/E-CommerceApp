@@ -10,13 +10,13 @@ const HomeCard = ({data}) => {
   // },[]);
 
   return (
-    <div onClick={()=>navigate(`/product/${data.id}`)}
-     className='cursor-pointer shadow-[1px_1px_10px_3px_rgba(0,0,0,0.3)] mx-3 my-4 py-2 px-2 w-[220px] h-auto bg-white'>
-      <div className="image w-full h-[270px] flex align-middle justify-center">
-        <img className='h-full w-full object-contain' src={data.imageUrl} alt="" />
+    <div onClick={()=>navigate(`/product/${data._id}`)}
+     className='cursor-pointer mx-3 my-4 py-2 px-2 w-[220px] h-auto bg-white'>
+      <div className="image bg-green-300 w-auto h-[270px] flex align-middle justify-center">
+        <img className='h-full w-full object-cover' src={data.ImageUrls[0]} alt="" />
       </div>
       <h3 className="brand font-bold mt-2 mb-1 text-left">{data.brand}</h3>
-      <p className="product font-normal text-sm text-gray-800 text-left">Men Printed Round Neck Pure Cotton Red T-Shirt</p>
+      <p className="product font-normal text-sm text-gray-800 text-left">{data.title}</p>
     </div>
   )
 }

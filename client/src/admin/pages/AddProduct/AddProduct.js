@@ -32,10 +32,8 @@ const AddProduct = () => {
   const [loading, setLoading] = useState(false);
   const handleFileChange = (event) => {
     const fileArray = Array.from(event.target.files); // Convert FileList to array
-    setFiles(fileArray); // Now files is an array
+    setFiles(fileArray); // Now files is an <array></array>
 };
-
-
 
 
   const handleSubmit= async()=> {
@@ -52,12 +50,12 @@ const AddProduct = () => {
         headers: {"Content-type":"multipart/form-data"}
       })
 
-      console.log(uploadRes);
+      // console.log(uploadRes);
 
-      const ImageUrls = uploadRes.data.ImageUrls;
+      const ImageUrls = uploadRes.data.imageUrls;
 
       setData((prev) => ({ ...prev, ImageUrls}));
-      console.log("Uploaded Image URL:", ImageUrls);
+      // console.log("Uploaded Image URL:", ImageUrls);
 
       const res = await axios.post("/admin/create", {...data, adminId:user._id, ImageUrls});
       console.log(res.data);
@@ -105,6 +103,7 @@ const AddProduct = () => {
       <div className="container">
         <h2 className="head my-4 font-bold text-3xl">Add New Product</h2>
 
+        {loading ? <div>Uploading Product Item...</div> : 
         <Box sx={{ display: "flex", flexWrap: "wrap" }}>
           <div className="imageInput">
             <input
@@ -170,9 +169,9 @@ const AddProduct = () => {
                 label="Top-Level-Category"
                 onChange={handleChange}
               >
-                <MenuItem value="Men">Men</MenuItem>
-                <MenuItem value="Women">Women</MenuItem>
-                <MenuItem value="Kids">Kids</MenuItem>
+                <MenuItem value="men">Men</MenuItem>
+                <MenuItem value="women">Women</MenuItem>
+                <MenuItem value="kids">Kids</MenuItem>
               </Select>
             </FormControl>
 
@@ -188,9 +187,9 @@ const AddProduct = () => {
                 label="Second-Level-Category"
                 onChange={handleChange}
               >
-                <MenuItem value="Clothing">Clothing</MenuItem>
-                <MenuItem value="Accessory">Accessory</MenuItem>
-                <MenuItem value="Sports">Sports</MenuItem>
+                <MenuItem value="clothing">Clothing</MenuItem>
+                <MenuItem value="accessory">Accessory</MenuItem>
+                <MenuItem value="sports">Sports</MenuItem>
               </Select>
             </FormControl>
 
@@ -206,11 +205,11 @@ const AddProduct = () => {
                 label="third-Level-Category"
                 onChange={handleChange}
               >
-                <MenuItem value="Tops">Tops</MenuItem>
-                <MenuItem value="Dress">Dress</MenuItem>
-                <MenuItem value="T-shirt">T-shirt</MenuItem>
-                <MenuItem value="Saree">Saree</MenuItem>
-                <MenuItem value="Lehenga">Lehenga</MenuItem>
+                <MenuItem value="tops">Tops</MenuItem>
+                <MenuItem value="dress">Dress</MenuItem>
+                <MenuItem value="tshirt">T-shirt</MenuItem>
+                <MenuItem value="saree">Saree</MenuItem>
+                <MenuItem value="lehenga">Lehenga</MenuItem>
               </Select>
             </FormControl>
           </div>
@@ -255,6 +254,7 @@ const AddProduct = () => {
           ))}
           <button onClick={addSizeField} className='mx-4 my-4'><div className='w-[20px] h-[20px] flex py-4 px-4 justify-center items-center align-middle rounded-full bg-slate-600'>+</div><span>Add Size</span></button>
         </Box>
+        }
 
         <div onClick={handleSubmit} className="button mt-6 px-5 py-3 bg-blue-500 text-white rounded-lg w-[150px] flex justify-center cursor-pointer">Submit</div>
       </div>

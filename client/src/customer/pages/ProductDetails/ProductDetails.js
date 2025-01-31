@@ -12,12 +12,30 @@ import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import ProductCard from '../ProductsPage/ProductCard';
 import { womenTops } from '../../../data/womenClothing';
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
 
 
 const ProductDetails = () => {
   const [sideImages, setSideImages] = useState([S5, S3, S4, S1, S6]);
-  const [primaryImage, setPrimaryImage] = useState(sideImages[0]);
-  const [currentItem, setCurrentItem] = useState(womenTops[0]);
+  const [currentItem, setCurrentItem] = useState();
+  const [primaryImage, setPrimaryImage] = useState();
+  const params = useParams();
+  //679bdb769fb909fe01861528
+
+  useEffect(()=> {
+    const getProductDetails=async()=> {
+      const productId = params.id;
+      try {
+        const res = await axios.get(`/product/item/${productId}`)
+        setCurrentItem(res.data);
+        setPrimaryImage(res.data.ImageUrls[0]);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getProductDetails();
+  }, [])
 
   const handleChangePrimary = (imageUrl) => {
     try {
@@ -37,13 +55,14 @@ const ProductDetails = () => {
     <div className="detailsPage bg-slate-300 pb-10">
       <div className="horizontal-padding mx-20 bg-white">
 
+     {currentItem && <>
         <div className="productDetails flex pt-4 pb-4">
           <div className="product-image-section w-5/12 grid grid-cols-7 pl-6">
             <div className="choice-images flex flex-col gap-4 col-span-1 mr-4">
-              {sideImages.map((imageUrl, key) => {
+              {currentItem.ImageUrls.map((imageUrl, key) => {
                 return (
                   <div key={key}
-                   className='w-full h-[105px] overflow-hidden bg-green-700'
+                   className='w-full h-[105px] overflow-hidden'
                    onMouseEnter={()=>handleChangePrimary(imageUrl)}
                    >
                     <img className='object-cover w-full h-full' src={imageUrl} alt="" />
@@ -68,8 +87,8 @@ const ProductDetails = () => {
               <div className="price">
                   <div className="flex gap-2 items-center">
                     <p className="text-xl font-semibold">₹{currentItem.price}</p>
-                    <p className="text-md text-decoration-line: line-through">₹{currentItem.discountedPrice}</p>
-                    <p className="text-md font-semibold text-green-600">{parseInt(((currentItem.price - currentItem.discountedPrice)*100)/currentItem.price)}% OFF</p>
+                    <p className="text-md text-decoration-line: line-through">₹{currentItem.discountPrice}</p>
+                    <p className="text-md font-semibold text-green-600">{parseInt(((currentItem.price - currentItem.discountPrice)*100)/currentItem.price)}% OFF</p>
                   </div>
                   <div className="price-text text-sm text-slate-500">inclusive of all taxes</div>
                 </div>
@@ -85,7 +104,7 @@ const ProductDetails = () => {
                 <div className="select-size flex flex-col mt-2">
                   <div className="head text-xl">Select Size</div>
                   <div className="sizes flex gap-3 mt-2">
-                    {currentItem.size.map((itemSize) => {
+                    {currentItem.sizes.map((itemSize) => {
                       return (
                         <button className="flex items-center align-middle justify-center border border-black w-12 py-2 rounded-md">{itemSize.name}</button>
                       )
@@ -98,9 +117,7 @@ const ProductDetails = () => {
                    className='roundButton'>Add to Cart</button>
                 </div>
 
-                <div className="description">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae blanditiis dignissimos repellendus similique inventore qui illo, corporis nesciunt esse veritatis harum voluptate unde! Deleniti mollitia qui repudiandae, ipsam molestias corporis.
-                </div>
+                <div className="description">{currentItem.description}</div>
 
                 <div className="highlights mt-8">
                   <div className="text-md font-bold">
@@ -127,7 +144,7 @@ const ProductDetails = () => {
         </div>
 
         <hr className='h-4 bg-slate-300' />
-
+       
         <div className="review_rating px-10 py-5">
           <h3 className='font-bold text-lg mb-4'>Recent Reviews and Rating</h3>
           <div className="" style={{display: "grid", gridTemplateColumns : "2fr 1fr"}}>
@@ -180,7 +197,7 @@ const ProductDetails = () => {
           </div>
         </div>
         <hr className='h-4 bg-slate-300' />
-        
+        </>}
         <div className="related-products-section mt-10 px-4">
           <div className="head text-2xl font-bold mt-4 mb-4">Similar Products</div>
           <div className="related col-span-4 flex flex-wrap justify-around border-slate-800 px-2 py-2 gap-2">

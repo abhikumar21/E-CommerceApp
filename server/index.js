@@ -8,6 +8,7 @@ import dotenv from "dotenv";
 import AuthRoute from './routes/AuthRoute.js';
 import UserRoute from './routes/UserRoute.js'
 import AdminRoute from './routes/AdminRoute.js'
+import ProductRoute from './routes/ProductsRoute.js'
 
 //4 -> cartServices
 
@@ -44,3 +45,4 @@ app.listen(PORT, async(req, res)=> {
 app.use('/auth', AuthRoute);
 app.use('/user', UserRoute)
 app.use('/admin', AdminRoute);
+app.use('/product', ProductRoute)
