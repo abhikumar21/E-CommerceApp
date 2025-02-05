@@ -14,6 +14,7 @@ import ProductCard from '../ProductsPage/ProductCard';
 import { womenTops } from '../../../data/womenClothing';
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
+import { useSelector } from 'react-redux'
 
 
 const ProductDetails = () => {
@@ -21,6 +22,8 @@ const ProductDetails = () => {
   const [currentItem, setCurrentItem] = useState();
   const [primaryImage, setPrimaryImage] = useState();
   const params = useParams();
+  const Token = useSelector((state)=> state.auth.token);
+  const [size, setSize] = useState();
   //679bdb769fb909fe01861528
 
   useEffect(()=> {
@@ -46,8 +49,20 @@ const ProductDetails = () => {
   }
 
 
-  const handleAddToCart = async() => {
-    // const res = await axios.post('/cart', currentItem);
+  const handleAddToCart = async(currentItem) => {
+    // console.log(Token);
+    try {
+      const res = await axios.post(
+        `/cart/add/${currentItem._id}`, 
+        {size}, 
+        {
+          headers: { Authorization: `Bearer ${Token}` }
+        }
+      );
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
 
@@ -104,16 +119,21 @@ const ProductDetails = () => {
                 <div className="select-size flex flex-col mt-2">
                   <div className="head text-xl">Select Size</div>
                   <div className="sizes flex gap-3 mt-2">
-                    {currentItem.sizes.map((itemSize) => {
+                    {currentItem.sizes.map((itemSize, index) => {
                       return (
-                        <button className="flex items-center align-middle justify-center border border-black w-12 py-2 rounded-md">{itemSize.name}</button>
+                        <button 
+                        onClick={()=>setSize(itemSize.name)}
+                        key={index} 
+                        className={`flex items-center align-middle justify-center border border-black w-12 py-2 rounded-md ${size===itemSize.name && "bg-slate-300"}`}>
+                          {itemSize.name}
+                        </button>
                       )
                     })}
                   </div>
                 </div>
 
                 <div className="addtocart my-10">
-                  <button onClick={handleAddToCart}
+                  <button onClick={()=>handleAddToCart(currentItem)}
                    className='roundButton'>Add to Cart</button>
                 </div>
 

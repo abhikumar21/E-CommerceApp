@@ -1,3 +1,4 @@
+import { generateToken } from "../config/jwtProvider.js";
 import UserModel from "../models/userModel.js";
 import jwt from 'jsonwebtoken';
 
@@ -14,11 +15,7 @@ export const registerUser = async(req, res)=> {
         }
         else{
            const user = await newUser.save();
-           const token = jwt.sign(
-           {email: user.email, id: user._id},
-           process.env.jwtKey,
-           {expiresIn: '24h'}
-        )
+           const token = await generateToken(user);
         res.status(200).json({user, token});
         }
         
@@ -33,11 +30,7 @@ export const loginUser = async(req, res) => {
         const oldUser = await UserModel.findOne({email});
         if(oldUser) {
             if(password === oldUser.password) {
-                const token = jwt.sign(
-                    {email: oldUser.email, id: oldUser._id},
-                    process.env.jwtKey,
-                    {expiresIn: "24h"}
-                )
+                const token = await generateToken(oldUser)
                 res.status(200).json({oldUser, token});
             }
             else{

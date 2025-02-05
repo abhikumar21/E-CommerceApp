@@ -23,10 +23,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 // middleware 
-app.use(function(req, res, next) {
-    console.log("middleware")
-    next()
-})
+// app.use(function(req, res, next) {
+//     console.log("middleware")
+//     next()
+// })
 
 const PORT = process.env.PORT
 app.listen(PORT, async(req, res)=> {
