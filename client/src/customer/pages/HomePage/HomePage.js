@@ -51,7 +51,7 @@ const HomePage = () => {
       <MyCarousel/>
       {productCategories.map((categoryProducts, index) => {
         return (
-          <HomeSlider key={index} id="menTshirt" category={categoryProducts} />
+          <HomeSlider key={index} category={categoryProducts} />
         )
       })}
       {/* <HomeSlider id="menTshirt" category={menTshirt} sectionName={"Men's Tshirt"} /> */}

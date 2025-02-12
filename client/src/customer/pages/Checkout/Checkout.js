@@ -15,11 +15,14 @@ const Checkout = () => {
   const [completed, setCompleted] = useState({});
   let location = useLocation();
   let navigate = useNavigate();
+  const [sharedAddress, setSharedAddress] = useState("");
+
 
   useEffect(()=> {
     const stepNo = activeStep+1;
     navigate(location.pathname+"?step="+stepNo);
-  }, [activeStep])
+  }, [activeStep]) 
+  
 
 
   const totalSteps = () => {
@@ -100,12 +103,11 @@ const Checkout = () => {
 
                     <Typography sx={{ mt: 2, mb: 1, py: 1 }}>
                       Step {activeStep + 1}
-                      {/* {activeStep+1===1 ? <button>Login</button> : 
-                      activeStep+1===2 ? <Address/> :
-                      activeStep+1===3 ? <OrderSummary/> :
+                      {activeStep+1===1 ? <button>Login</button> : 
+                      activeStep+1===2 ? <Address setSharedAddress={setSharedAddress} setActiveStep={setActiveStep} /> :
+                      activeStep+1===3 ? <OrderSummary sharedAddress={sharedAddress} /> :
                       activeStep+1===4 ? <div>this 4</div> : 
-                      <></>} */}
-                      <OrderSummary/>
+                      <></>}
                     </Typography>
 
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 4 }}>

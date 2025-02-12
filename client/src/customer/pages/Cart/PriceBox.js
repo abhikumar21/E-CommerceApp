@@ -7,11 +7,11 @@ const PriceBox = ({cartDetails}) => {
     <hr className='h-0.5 bg-slate-300' />
     <div className="price flex justify-between">
       <div className="">Price</div>
-      <div className="amt">$ {cartDetails.totalPrice}</div>
+      <div className="amt">$ {cartDetails?.totalPrice}</div>
     </div>
     <div className="price flex justify-between">
       <div className="">Discount</div>
-      <div className="amt">$ {Math.floor(cartDetails.totalPrice - cartDetails.totalDiscountPrice)}</div>
+      <div className="amt">$ {Math.floor(cartDetails?.totalPrice - cartDetails?.totalDiscountPrice)}</div>
     </div>
     <div className="price flex justify-between">
       <div className="">Delivery Charges</div>
@@ -20,7 +20,7 @@ const PriceBox = ({cartDetails}) => {
     <hr className='h-0.5 bg-slate-300' />
     <div className="price flex justify-between text-2xl font-medium my-2">
       <div className="">Total Amount</div>
-      <div className="amt">${cartDetails.totalDiscountPrice}</div>
+      <div className="amt">${cartDetails?.totalDiscountPrice}</div>
     </div>
 
     <button className="checkout bg-lime-400 py-3 text-blue-800 font-medium text-xl">

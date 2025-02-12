@@ -1,36 +1,59 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { womenTops } from '../../../data/womenClothing'
 import CardCart from '../Cart/CardCart'
 import Cart from '../Cart/Cart'
 import PriceBox from '../Cart/PriceBox'
+import { useSelector } from 'react-redux'
+import axios from 'axios'
+import Card_Orders from './Card_Orders'
+import Price_Orders from './Price_Orders'
 
 
-const Details =()=> {
+const Details =({sharedAddress})=> {
     return (
     <div className="address-details">
-        <div className="name">Abhishek</div>
-        <div className="address">Mugare, Songaon, Ambedkar-Nagar, Uttar Pradesh, India, 224122</div>
-        <div className="phone mb-4">77766677766</div>
+        <div className="name">{sharedAddress.recieverName}</div>
+        <div className="address">{sharedAddress.Address}</div>
+        <div className="phone mb-4">{sharedAddress.Phone}</div>
     </div>
     )
 }
 
-const OrderSummary = () => {
+const OrderSummary = ({sharedAddress}) => {
+  const Token = useSelector((state)=>state.auth.token)
+  const [cartDetails, setCartDetails] = useState();
+
+  useEffect(()=> {
+    const userCart=async()=> {
+      try {
+        const res = await axios.get('/cart', {
+          headers: {Authorization: `Bearer ${Token}`}
+        })
+        console.log(res.data);
+        // setCartItems(res.data.cartItems);
+        setCartDetails(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    userCart();
+  }, [])
+
   return (
     <div className='orderSummary'>
       <div className="container mt-10">
-        <div className="address px-4 py-4 mb-10" style={{boxShadow: "0 0 10px black"}}><Details/></div>
+        <div className="address px-4 py-4 mb-10" style={{boxShadow: "0 0 10px black"}}><Details sharedAddress={sharedAddress} /></div>
         <div className="orders mt-10" style={{display: "grid", gridTemplateColumns:"3fr 1fr", gap:"20px"}}>
             <div className="order-cards bg-slate-200">
                 {
-                    womenTops.map((item)=> {
+                    cartDetails?.cartItems.map((item)=> {
                         return (
-                            <CardCart item={item}/>
+                            <Card_Orders item={item}/>
                         )
                     })
                 }
             </div>
-                <PriceBox/>
+                <Price_Orders cartDetails={cartDetails} sharedAddress={sharedAddress}/>
         </div>
         {/* <Cart/> */}
       </div>

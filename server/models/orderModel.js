@@ -9,11 +9,6 @@ const OrderSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'OrderItem',
     }],
-    orderDate: {
-        type: Date,
-        required: true,
-        default: Date.now(),
-    },
     deliveryDate: {
         type: Date,        
     },
@@ -38,13 +33,8 @@ const OrderSchema = mongoose.Schema({
     },
     totalPrice: {
         type: Number,
-        required: true,
     },
-    totalDiscountedPrice: {
-        type: Number,
-        required: true,
-    },
-    totalItem: {
+    totalDiscountPrice: {
         type: Number,
     }
     

@@ -4,27 +4,27 @@ const AddressSchema = mongoose.Schema(
     {
         firstname: {
             type: String,
-            required: true
+            // required: true
         },
         lastname: {
             type: String,
-            required: true
+            // required: true
         },
         streetAddress: {
             type: String,
-            required: true
+            // required: true
         },
         city: {
             type: String,
-            required: true
+            // required: true
         },
         state: {
             type: String,
-            required: true
+            // required: true
         },
         zipCode: {
-            type: number,
-            required: true
+            type: Number,
+            // required: true
         },
         user: {
             type: mongoose.Schema.ObjectId,
@@ -32,7 +32,7 @@ const AddressSchema = mongoose.Schema(
         },
         mobile: {
             type: String,
-            required: true 
+            // required: true 
         }
 
     }

@@ -31,6 +31,7 @@ const ProductDetails = () => {
       const productId = params.id;
       try {
         const res = await axios.get(`/product/item/${productId}`)
+        // console.log(res.data);
         setCurrentItem(res.data);
         setPrimaryImage(res.data.ImageUrls[0]);
       } catch (error) {

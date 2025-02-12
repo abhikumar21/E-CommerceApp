@@ -4,7 +4,7 @@ export const generateToken=(user)=> {
         const token = jwt.sign(
             {email: user.email, id: user._id},
             process.env.jwtKey,
-            {expiresIn: '24h'}
+            {expiresIn: '7d'}
         )
         return token;
 }
