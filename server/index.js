@@ -11,6 +11,7 @@ import AdminRoute from './routes/AdminRoute.js'
 import ProductRoute from './routes/ProductsRoute.js'
 import CartRoute from './routes/CartRoute.js'
 import OrderRoute from './routes/OrderRoute.js'
+import AddressRoute from './routes/AddressRoute.js'
 
 
 //4 -> cartServices
@@ -51,3 +52,4 @@ app.use('/admin', AdminRoute);
 app.use('/product', ProductRoute)
 app.use('/cart', CartRoute)
 app.use('/order', OrderRoute)
+app.use('/address', AddressRoute)

@@ -5,25 +5,37 @@ import { useSelector } from 'react-redux';
 const Price_Orders = ({cartDetails, sharedAddress}) => {
 
   const Token = useSelector((state)=>state.auth.token)
+  const User = useSelector((state)=> state.auth.user)
 
   const [orderData, setOrderData] = useState({
     deliveryDate:"",
-    shippingAddress: sharedAddress?.Address,
+    shippingAddress: sharedAddress?._id,
     paymentDetails: "",
     totalPrice: cartDetails?.totalPrice,
     totalDiscountPrice: cartDetails?.totalDiscountPrice,
   });
+
+  console.log(cartDetails.cartItems)
   
   const handleCreateOrder=async()=> {
     const currentDate = new Date();
     const shippingDate = new Date(currentDate.getTime() + 7*24*60*60*1000);
     await setOrderData({...orderData, deliveryDate: shippingDate.toISOString().split("T")[0] })
+    const userId = User._id;
+
     try {
       // console.log(orderData)
-      const res = await axios.post('/order', orderData, {
+      const res1 = await axios.post('/order', orderData, {
         headers: {Authorization: `Bearer ${Token}`}
-      });
-      console.log(res.data);
+      })
+      if(res1) {
+        // const res2 = await axios.post(`/order/${res1.data._id}`, )
+      }
+      // if(res) {
+      //   const result = await axios.post(`/order/${res.data._id}`, userId)
+      //   console.log(result.data);
+      // }
+      console.log(res1.data);
     } catch (error) {
       console.log(error);
     }

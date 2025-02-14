@@ -11,11 +11,15 @@ import Price_Orders from './Price_Orders'
 
 const Details =({sharedAddress})=> {
     return (
-    <div className="address-details">
-        <div className="name">{sharedAddress.recieverName}</div>
-        <div className="address">{sharedAddress.Address}</div>
-        <div className="phone mb-4">{sharedAddress.Phone}</div>
-    </div>
+      <div className="address-details">
+      <div className="name">{sharedAddress.firstname} {sharedAddress.lastname}</div>
+      <div className="address">{sharedAddress.streetAddress}</div>
+      <div className="city">{sharedAddress.city}, <span className="state">{sharedAddress.state}</span>
+      </div>
+      <div className="zipCode">{sharedAddress.zipCode}</div>
+      <div className="phone mb-4">{sharedAddress.mobile}</div>
+
+  </div>
     )
 }
 

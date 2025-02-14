@@ -11,11 +11,18 @@ import OrderSummary from './OrderSummary';
 
 const Checkout = () => {
   const steps = ['Login', 'Delivery Address', 'Order Summary', 'Payment'];
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(1);
   const [completed, setCompleted] = useState({});
   let location = useLocation();
   let navigate = useNavigate();
-  const [sharedAddress, setSharedAddress] = useState("");
+  const [sharedAddress, setSharedAddress] = useState({        firstname:"",
+    lastname:"",
+    streetAddress:"",
+    city:"",
+    state:"",
+    zipCode:"",
+    mobile:""
+  });
 
 
   useEffect(()=> {

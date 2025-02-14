@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const PriceBox = ({cartDetails}) => {
+  const navigate = useNavigate();
   return (
    <div className="price-box bg-white px-4 py-4 gap-4 flex flex-col">
     <div className="heading font-bold text-xl text-slate-600">Price Details</div>
@@ -23,7 +25,9 @@ const PriceBox = ({cartDetails}) => {
       <div className="amt">${cartDetails?.totalDiscountPrice}</div>
     </div>
 
-    <button className="checkout bg-lime-400 py-3 text-blue-800 font-medium text-xl">
+    <button 
+    onClick={()=>navigate(`/checkout`)}
+    className="checkout bg-lime-400 py-3 text-blue-800 font-medium text-xl">
       Checkout
     </button>
 
