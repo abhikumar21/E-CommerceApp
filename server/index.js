@@ -12,6 +12,7 @@ import ProductRoute from './routes/ProductsRoute.js'
 import CartRoute from './routes/CartRoute.js'
 import OrderRoute from './routes/OrderRoute.js'
 import AddressRoute from './routes/AddressRoute.js'
+import PaymentRoute from './routes/PaymentRoute.js'
 
 
 //4 -> cartServices
@@ -53,3 +54,4 @@ app.use('/product', ProductRoute)
 app.use('/cart', CartRoute)
 app.use('/order', OrderRoute)
 app.use('/address', AddressRoute)
+app.use('/payment', PaymentRoute)

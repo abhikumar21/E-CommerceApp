@@ -15,7 +15,7 @@ const Price_Orders = ({cartDetails, sharedAddress}) => {
     totalDiscountPrice: cartDetails?.totalDiscountPrice,
   });
 
-  console.log(cartDetails.cartItems)
+  // console.log(cartDetails?.cartItems)
   
   const handleCreateOrder=async()=> {
     const currentDate = new Date();
@@ -25,17 +25,14 @@ const Price_Orders = ({cartDetails, sharedAddress}) => {
 
     try {
       // console.log(orderData)
-      const res1 = await axios.post('/order', orderData, {
+      const res = await axios.post('/order', orderData, {
         headers: {Authorization: `Bearer ${Token}`}
       })
-      if(res1) {
-        // const res2 = await axios.post(`/order/${res1.data._id}`, )
+      if(res) {
+        const result = await axios.post(`/order/${res.data._id}`, {userId})
+        console.log(result.data);
       }
-      // if(res) {
-      //   const result = await axios.post(`/order/${res.data._id}`, userId)
-      //   console.log(result.data);
-      // }
-      console.log(res1.data);
+      // console.log(res.data);
     } catch (error) {
       console.log(error);
     }
