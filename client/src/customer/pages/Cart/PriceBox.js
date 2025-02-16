@@ -28,7 +28,7 @@ const PriceBox = ({cartDetails}) => {
     <button 
     onClick={()=>navigate(`/checkout`)}
     className="checkout bg-lime-400 py-3 text-blue-800 font-medium text-xl">
-      Checkout
+      Place Order
     </button>
 
   </div>

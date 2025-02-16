@@ -11,6 +11,7 @@ import Checkout from '../customer/pages/Checkout/Checkout';
 import OrdersPage from '../customer/pages/OrdersPage/OrdersPage'
 import OrderDeliverPage from '../customer/pages/OrderDeliver/OrderDeliverPage';
 import Dashboard from '../admin/pages/Dashboard/Dashboard';
+import PaymentSuccess from '../customer/pages/Checkout/PaymentSuccess';
 
 const CustomerRouter = () => {
   return (
@@ -28,6 +29,7 @@ const CustomerRouter = () => {
           <Route path="/account/orders" element={<OrdersPage/>} />
           <Route path="/account/orders/1" element={<OrderDeliverPage/>} />
           <Route path="/admin" element={<Dashboard/>} />
+          <Route path="/payment/:id" element={<PaymentSuccess/>} />
 
         </Routes>
       </div>

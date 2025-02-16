@@ -6,7 +6,7 @@ import { createMyPaymentLink, updateMyPaymentInformation } from "../controllers/
 
 const router = express.Router();
 
-router.post('/:id', authenticate, createMyPaymentLink);
-router.get('/', authenticate, updateMyPaymentInformation)
+router.post('/:id', createMyPaymentLink);
+router.get('/', updateMyPaymentInformation)
 
 export default router;

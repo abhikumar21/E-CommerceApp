@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useSelector } from 'react-redux';
 
+//39:52 payment
+
 const Price_Orders = ({cartDetails, sharedAddress}) => {
 
   const Token = useSelector((state)=>state.auth.token)
@@ -29,8 +31,14 @@ const Price_Orders = ({cartDetails, sharedAddress}) => {
         headers: {Authorization: `Bearer ${Token}`}
       })
       if(res) {
-        const result = await axios.post(`/order/${res.data._id}`, {userId})
-        console.log(result.data);
+        const orderId = res.data._id;
+        const addProducts = await axios.post(`/order/${orderId}`, {userId})
+        console.log(addProducts.data);
+        if(addProducts) {
+          const {data} = await axios.post(`/payment/${orderId}`);
+          console.log(data)
+          window.location.href = data.payment_link_url;
+        }
       }
       // console.log(res.data);
     } catch (error) {
