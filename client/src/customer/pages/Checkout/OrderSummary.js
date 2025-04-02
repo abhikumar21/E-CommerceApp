@@ -16,8 +16,8 @@ const Details =({sharedAddress})=> {
       <div className="address">{sharedAddress.streetAddress}</div>
       <div className="city">{sharedAddress.city}, <span className="state">{sharedAddress.state}</span>
       </div>
-      <div className="zipCode">{sharedAddress.zipCode}</div>
-      <div className="phone mb-4">{sharedAddress.mobile}</div>
+      <div className="zipCode"><strong>Pin Code: </strong>{sharedAddress.zipCode}</div>
+      <div className="phone mb-4"><strong>Phone: </strong>{sharedAddress.mobile}</div>
 
   </div>
     )

@@ -44,32 +44,51 @@ export const findUserCart = async(req, res)=> {
     }
 }
 
-export const addToCart= async(req, res)=> {
+export const addToCart = async(req, res) => {
     const user = req.user;
     const productId = req.params.id;
     const {size} = req.body;
-    // const product = await Product.findById(productId);
+
     try {
-        const cart = await CartModel.findOne({user: user._id});
-        const product = await Product.findById(productId);  
-        const isPresent = await CartItemModel.findOne({cart: cart._id, product: productId});
-
-        if(!isPresent) {
-            const cartItems = new CartItemModel({
-                cart: cart._id,
-                product: productId,
-                size,
-                quantity: 1,
-                price: product.price,
-                discountPrice: product.discountPrice,
-                userId: user._id
-            })
-            const createdCartItem = await cartItems.save();
-            cart.cartItems.push(createdCartItem);
-            await cart.save();
-
-            res.status(200).json(cart);
+        // Find or create cart
+        let cart = await CartModel.findOne({user: user._id});
+        if(!cart) {
+            cart = await new CartModel({
+                user: user._id,
+                cartItems: [],
+            }).save();
         }
+
+        // Find product
+        const product = await Product.findById(productId);  
+        if(!product) return res.status(404).json("Product not found");
+
+        // Check if item exists in cart
+        let cartItem = await CartItemModel.findOne({
+            cart: cart._id, 
+            product: productId,
+            size: size
+        });
+
+        if(cartItem) return res.status(400).json("Item is already in your cart");
+
+        // Create new cart item
+        cartItem = await new CartItemModel({
+            cart: cart._id,
+            product: productId,
+            size: size,
+            quantity: 1,
+            price: product.price,
+            discountPrice: product.discountPrice,
+            userId: user._id
+        }).save();
+
+        // Add to cart items array
+        cart.cartItems.push(cartItem._id);
+        await cart.save();
+
+        res.status(200).json(cart);
+
     } catch (error) {
         res.status(500).json(error);
     }

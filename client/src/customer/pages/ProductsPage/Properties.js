@@ -1,5 +1,29 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
+import 'rc-slider/assets/index.css';
+import 'rc-tooltip/assets/bootstrap.css';
+import ReactDOM from 'react-dom';
+import Tooltip from 'rc-tooltip';
+import Slider from 'rc-slider';
+const createSliderWithTooltip = Slider.createSliderWithTooltip;
+const Range = createSliderWithTooltip(Slider.Range);
+const Handle = Slider.Handle;
+
+const handle = (props) => {
+  const { value, dragging, index, ...restProps } = props;
+  return (
+    <Tooltip
+      prefixCls="rc-slider-tooltip"
+      overlay={value}
+      visible={dragging}
+      placement="top"
+      key={index}
+    >
+      <Handle value={value} {...restProps} />
+    </Tooltip>
+  );
+};
+
 
 const Properties = () => {
   //2:51
@@ -100,17 +124,17 @@ const Properties = () => {
             { id: 4, value: "XXL", label: "XXL" }
         ],
       },
-      {
-        id: "price",
-        name: "Price",
-        options: [
-            { id: 1, value: "$10 To $20", label: "$10 To $20" },
-            { id: 2, value: "$20 To $30", label: "$20 To $30" },
-            { id: 3, value: "$30 To $40", label: "$30 To $40" },
-            { id: 4, value: "$40 To $50", label: "$40 To $50" },
-            { id: 5, value: "$50 To $60", label: "$50 To $60" }
-        ],
-      }, 
+      // {
+      //   id: "price",
+      //   name: "Price",
+      //   options: [
+      //       { id: 1, value: "$10 To $20", label: "$10 To $20" },
+      //       { id: 2, value: "$20 To $30", label: "$20 To $30" },
+      //       { id: 3, value: "$30 To $40", label: "$30 To $40" },
+      //       { id: 4, value: "$40 To $50", label: "$40 To $50" },
+      //       { id: 5, value: "$50 To $60", label: "$50 To $60" }
+      //   ],
+      // }, 
       {
         id:"discount",
         name: "Discount",
@@ -132,13 +156,31 @@ const Properties = () => {
         ]
       }
     ];
-    
-  
 
+    const [minValue, setMinValue] = useState(10);
+    const [maxValue, setMaxValue] = useState(80)
+    
+  const clearRange=()=> {
+
+  }
+
+
+  const handleMinChange=(e)=> {
+    setMinValue(e.target.value);
+  }
+  const handleMaxChange=(e)=> {
+    setMaxValue(e.target.value)
+  }
 
   return (
     <div>
-       <ul className="list style-none border-solid border-2 border-slate-800">
+       <ul className="list style-none border-solid border-2 border-slate-800 flex flex-col">
+        
+          <div className='relative w-full h-auto px-4 my-2'>
+            <p className='mb-2'>Price</p>
+            <Range min={0} max={20} defaultValue={[0, 10]} tipFormatter={value => `${value}%`} className="range" />
+          </div>
+
                     {PropertiesData.map((property)=> {
                       return (
                     <li key={property.id}>

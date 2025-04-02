@@ -24,7 +24,7 @@ const HomePage = () => {
       try {
         const arr = [
           ["women", "clothing", "tops"],
-          ["women", "clothing", "dress"]
+          ["women", "clothing", "dresses"]
         ]
         let res = [];
         for(let i=0;i<2;i++) {

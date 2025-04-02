@@ -9,3 +9,11 @@
     padding: 15px 15px;
     border-bottom: 2px solid #b9b9b9;
 }
+
+.rc-slider-track {
+    background-color: rgb(86, 193, 255) !important;
+}
+.rc-slider-handle {
+    background-color: rgb(34, 145, 255) !important;
+    border: none !important;
+}

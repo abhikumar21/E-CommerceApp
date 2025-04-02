@@ -17,7 +17,10 @@ const Card_Orders = ({item}) => {
         <div className="details flex flex-col cursor-pointer px-2 relative">
             <h4 className='font-bold text-slate-700 my-2'>{item.brand}</h4>
             <p>{item.product?.title}</p>
-            <h5 className="text-slate-500 text-sm font-semibold py-1">{item.product?.color}</h5>
+            <div className='flex gap-8'>
+              <h5 className="text-slate-500 text-sm font-semibold py-1">{item.product?.color}</h5>
+              <p className='py-1'><strong>size: </strong>{item.size}</p>
+            </div>
             <div className='flex items-center gap-2'>
                 <span className="font-bold">${item.product?.discountPrice}</span>
                 <span className='text-sm line-through opacity-60'>${item.product?.price}</span>

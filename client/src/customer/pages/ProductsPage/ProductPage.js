@@ -1,15 +1,39 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import GridViewRoundedIcon from '@mui/icons-material/GridViewRounded';
 import ArrowDropDownRoundedIcon from '@mui/icons-material/ArrowDropDownRounded';
 import './ProductPage.css'
 import ProductCard from './ProductCard.js';
 import Properties from './Properties.js';
 import { womenTops } from '../../../data/womenClothing.js';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 
 
 const ProductPage = () => {
 
+  const params = useParams();
+  const {levelOne, levelTwo, levelThree} = params;
+  const [categoryItems, setCategoryItems] = useState([]);
+
+
+  
+  useEffect(()=> {
+    const getCategoryProducts=async()=> {
+      const res = await axios.get('/product', {
+        params:{
+          topLevelCategory:levelOne, 
+          secondLevelCategory:levelTwo, 
+          thirdLevelCategory:levelThree
+        }
+      })
+      console.log(res.data); //get requests cannot have a body
+      setCategoryItems(res.data);
+    }
+    if(levelOne) {
+      getCategoryProducts();
+    }
+  }, [params]);
 
 
   return (
@@ -34,7 +58,7 @@ const ProductPage = () => {
                <Properties/>
             </div>
             <div className="products col-span-4 border-solid border-2 flex flex-wrap justify-around border-slate-800 px-2 py-2">
-              {womenTops.map((item)=> {
+              {categoryItems.map((item)=> {
                 // console.log(item)
                 return (
                   <ProductCard item={item}/>

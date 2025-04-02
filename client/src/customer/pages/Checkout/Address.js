@@ -63,33 +63,35 @@ const Address = ({setSharedAddress, setActiveStep}) => {
                 headers: {Authorization: `Bearer ${Token}`}
             });
             console.log(res.data);
+            getAddressDetails();
         } catch (error) {
             console.log(error)
         }
     }
 
-    useEffect(()=> {
-        const getAddressDetails = async(req, res)=> {
-            if(Token) {
-                const res = await axios.get('/address', {
-                    headers: {Authorization: `Bearer ${Token}`}
-                })
-                // console.log(res.data);
-                setAddresses(res.data);
-                setData({
-                    firstname:"",
-                    lastname:"",
-                    streetAddress:"",
-                    city:"",
-                    state:"",
-                    zipCode:"",
-                    mobile:""
-                })
-            }
-            else{
-                console.log('token not found')
-            }
+    const getAddressDetails = async(req, res)=> {
+        if(Token) {
+            const res = await axios.get('/address', {
+                headers: {Authorization: `Bearer ${Token}`}
+            })
+            // console.log(res.data);
+            setAddresses(res.data);
+            setData({
+                firstname:"",
+                lastname:"",
+                streetAddress:"",
+                city:"",
+                state:"",
+                zipCode:"",
+                mobile:""
+            })
         }
+        else{
+            console.log('token not found')
+        }
+    }
+    
+    useEffect(()=> {
         getAddressDetails();
     }, [Token])
   

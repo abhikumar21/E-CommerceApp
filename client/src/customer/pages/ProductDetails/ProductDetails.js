@@ -24,6 +24,7 @@ const ProductDetails = () => {
   const params = useParams();
   const Token = useSelector((state)=> state.auth.token);
   const [size, setSize] = useState();
+  const [productInCartMessage, setProductInCartMessage] = useState("");
   //679bdb769fb909fe01861528
 
   useEffect(()=> {
@@ -52,6 +53,10 @@ const ProductDetails = () => {
 
   const handleAddToCart = async(currentItem) => {
     // console.log(Token);
+    if(!size) {
+      setProductInCartMessage("Please select size first !!")
+      return;
+    }
     try {
       const res = await axios.post(
         `/cart/add/${currentItem._id}`, 
@@ -61,8 +66,16 @@ const ProductDetails = () => {
         }
       );
       console.log(res);
+      if(res.status===200) {
+        setProductInCartMessage("Item added to cart");
+      }
     } catch (error) {
-      console.log(error);
+      if(error.response) {
+        setProductInCartMessage(error.response.data || "Something went wrong");
+      }
+      else{
+        console.log(setProductInCartMessage("Network error. Please try again later."));
+      }
     }
   }
 
@@ -134,6 +147,7 @@ const ProductDetails = () => {
                 </div>
 
                 <div className="addtocart my-10">
+                 {productInCartMessage &&  <div className='text-green-400'>{productInCartMessage}</div>}
                   <button onClick={()=>handleAddToCart(currentItem)}
                    className='roundButton'>Add to Cart</button>
                 </div>

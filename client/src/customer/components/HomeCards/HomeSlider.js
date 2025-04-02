@@ -18,13 +18,13 @@ const HomeSlider = ({id, category}) => {
     const prevButtonSelector = `.${id}-prev-button`;
     const nextButtonSelector = `.${id}-next-button`;
     
-    // console.log(category);
+    console.log(category);
     
 
   return (
-
+  //  category &&
     <div className="cards flex flex-col mx-4 my-4 mt-[50px] relative h-full">
-        <h2 className='text-2xl font-semibold mx-5 capitalize'>{`${category[0].topLevelCategory}-${category[0].thirdLevelCategory}`}</h2>
+        <h2 className='text-2xl font-semibold mx-5 capitalize'>{`${category[0]?.topLevelCategory}-${category[0]?.thirdLevelCategory}`}</h2>
         <Swiper
         direction={'horizontal'}
           slidesPerView={5.4}

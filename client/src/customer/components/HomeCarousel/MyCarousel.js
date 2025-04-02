@@ -45,10 +45,10 @@ export default function MyCarousel() {
         clickable:true,
       }} 
       modules={[Pagination, Autoplay]} 
-      // autoplay={{
-      //   delay: 3000,
-      //   disableOnInteraction: false,
-      // }} 
+      autoplay={{
+        delay: 3000,
+        disableOnInteraction: false,
+      }} 
       speed={1000}
       className="mySwiper ">
 
