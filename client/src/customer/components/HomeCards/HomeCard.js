@@ -11,8 +11,8 @@ const HomeCard = ({data}) => {
 
   return (
     <div onClick={()=>navigate(`/product/${data._id}`)}
-     className='cursor-pointer mx-3 my-4 py-2 px-2 w-[220px] h-auto bg-white'>
-      <div className="image bg-green-300 w-auto h-[270px] flex align-middle justify-center">
+     className='cursor-pointer mx-3 my-4 py-2 px-0 w-[220px] h-auto bg-white'>
+      <div className="image bg-green-300 w-auto h-[300px] flex align-middle justify-center">
         <img className='h-full w-full object-cover' src={data.ImageUrls[0]} alt="" />
       </div>
       <h3 className="brand font-bold mt-2 mb-1 text-left">{data.brand}</h3>

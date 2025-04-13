@@ -1,10 +1,6 @@
 import React, { useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import C1 from './images/c1.avif';
-import C2 from './images/c2.jpg';
-import C3 from './images/c3.jpg';
-import C4 from './images/c4.jpg';
 
 
 
@@ -20,19 +16,19 @@ export default function MyCarousel() {
     const itemData = [
         {
             id:0,
-            imgUrl: C4
+            imgUrl: "/carousal/c1.webp"
         },
         {
             id:1,
-            imgUrl: C2
+            imgUrl: "/carousal/c2.webp"
         },
         {
             id:2,
-            imgUrl: C3
+            imgUrl: "/carousal/c3.webp"
         },
         {
             id:3,
-            imgUrl: C1
+            imgUrl: "/carousal/c4.webp"
         }
 
     ]

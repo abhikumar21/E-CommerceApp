@@ -23,6 +23,7 @@ const HomePage = () => {
     const getCategoryProduct = async()=> {
       try {
         const arr = [
+          ["men", "clothing", "t-shirts"],
           ["women", "clothing", "tops"],
           ["women", "clothing", "dresses"]
         ]
